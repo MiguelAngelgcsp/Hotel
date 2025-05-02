@@ -1,24 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package co.edu.konradlorenz.model;
 
-/**
- *
- * @author Usuario
- */
+
 public abstract class Habitacion{
     protected int numeroHabitacion;
+    protected boolean disponible;
     protected int numeroCamas;
     protected int numeroTelevisores;
     protected int  numeroBaños;
     
-    public Habitacion(int numeroHabitacion) {
+    
+    public Habitacion(int numeroHabitacion,boolean disponible) {
         this.numeroHabitacion = numeroHabitacion;
+        this.disponible=disponible;
         this.numeroCamas = 2;
         this.numeroTelevisores = 1;
         this.numeroBaños = 1;
+        
     }
 
     public int getNumeroHabitacion() {
@@ -27,6 +25,14 @@ public abstract class Habitacion{
 
     public void setNumeroHabitacion(int numeroHabitacion) {
         this.numeroHabitacion = numeroHabitacion;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
 
     public int getNumeroCamas() {

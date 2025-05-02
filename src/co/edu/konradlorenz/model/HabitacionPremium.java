@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package co.edu.konradlorenz.model;
 
-/**
- *
- * @author Usuario
- */
 public class HabitacionPremium extends Habitacion {
 
     private boolean limpieza;
@@ -15,8 +8,8 @@ public class HabitacionPremium extends Habitacion {
     private boolean comidaHabitacion;
     private boolean wifi;
 
-    public HabitacionPremium(int numeroHabitacion) {
-        super(numeroHabitacion);
+    public HabitacionPremium(int numeroHabitacion, boolean disponible) {
+        super(numeroHabitacion, disponible);
         this.limpieza = true;
         this.miniBar = true;
         this.comidaHabitacion = true;
@@ -30,6 +23,7 @@ public class HabitacionPremium extends Habitacion {
     public void setLimpieza(boolean limpieza) {
         this.limpieza = limpieza;
     }
+    
 
     public boolean isMiniBar() {
         return miniBar;
