@@ -16,16 +16,23 @@ public class Controlador {
     }
 
     // Método para reservar habitación
-    public boolean reservarHabitacion(String nombre, String documento, boolean premium, LocalDate entrada, LocalDate salida) {
+    public boolean reservarHabitacion(String nombre, String documento, boolean premium, LocalDate entrada, LocalDate salida)
+    {
         Cliente cliente = new Cliente(nombre, documento);
 
-        for (Piso piso : hotel.getPisos()) {
-            for (Habitacion habitacion : piso.getHabitaciones()) {
-                if (habitacion.isDisponible()) {
-                    if (premium && habitacion instanceof HabitacionPremium) {
-                        return hacerReserva(cliente, habitacion);
-                    } else if (!premium && habitacion instanceof HabitacionRegular) {
-                        return hacerReserva(cliente, habitacion);
+        for (Piso piso : hotel.getPisos()) 
+        {
+            for (Habitacion habitacion : piso.getHabitaciones()) 
+            {
+                if (habitacion.isDisponible()) 
+                {
+                    if (premium && habitacion instanceof HabitacionPremium) 
+                    {
+                        return hacerReserva(cliente, habitacion, entrada, salida);
+                    } 
+                    else if (!premium && habitacion instanceof HabitacionRegular) 
+                    {
+                        return hacerReserva(cliente, habitacion, entrada, salida);
                     }
                 }
             }
@@ -36,17 +43,20 @@ public class Controlador {
     }
 
     // Realiza la reserva y agrega a la lista de reservas
-    private boolean hacerReserva(Cliente cliente, Habitacion habitacion) {
-        habitacion.setDisponible(false);
-        Reserva reserva = new Reserva(cliente, habitacion, LocalDate.now(), LocalDate.now().plusDays(3));
-        hotel.agregarReserva(reserva);
-        JOptionPane.showMessageDialog(null, "Reserva realizada con éxito para la habitación " + habitacion.getNumeroHabitacion(), "Reserva Confirmada", JOptionPane.INFORMATION_MESSAGE);
-        return true;
+    private boolean hacerReserva(Cliente cliente, Habitacion habitacion, LocalDate entrada, LocalDate salida) 
+    {
+    habitacion.setDisponible(false);
+    Reserva reserva = new Reserva(cliente, habitacion, entrada, salida);
+    hotel.agregarReserva(reserva);
+    JOptionPane.showMessageDialog(null, "Reserva realizada con éxito para la habitación " + habitacion.getNumeroHabitacion(), "Reserva Confirmada", JOptionPane.INFORMATION_MESSAGE);
+    return true;
     }
 
-    public void mostrarReservas() {
+    public void mostrarReservas() 
+    {
         StringBuilder reservasList = new StringBuilder();
-        for (Reserva reserva : hotel.getReservas()) {
+        for (Reserva reserva : hotel.getReservas()) 
+        {
             reservasList.append("Reserva: " + reserva.getCliente().getNombre() +
                     " - Habitación " + reserva.getHabitacion().getNumeroHabitacion() +
                     " - Entrada: " + reserva.getFechaEntrada() +

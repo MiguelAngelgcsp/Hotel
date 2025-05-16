@@ -60,7 +60,8 @@ public abstract class Habitacion{
     }
 
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return "Habitacion{" + "numeroHabitacion=" + numeroHabitacion + ", numeroCamas=" + numeroCamas + ", numeroTelevisores=" + numeroTelevisores + ", numeroBa\u00f1os=" + numeroBaños + '}';
     }
 

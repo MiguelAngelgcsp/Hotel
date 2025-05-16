@@ -13,16 +13,22 @@ public class Hotel {
         crearPisosYHabitaciones();
     }
 
-    private void crearPisosYHabitaciones() {
-        for (int i = 1; i <= 7; i++) {  
+    private void crearPisosYHabitaciones() 
+    {
+        for (int i = 1; i <= 7; i++) 
+        {  
             Piso piso = new Piso(i);
 
-            for (int j = 1; j <= 16; j++) { 
+            for (int j = 1; j <= 16; j++) 
+            { 
                 int numeroHabitacion = i * 100 + j; 
 
-                if (j % 2 == 0) {
+                if (j % 2 == 0) 
+                {
                     piso.agregarHabitacion(new HabitacionPremium(numeroHabitacion,true));
-                } else {
+                } 
+                else 
+                {
                     piso.agregarHabitacion(new HabitacionRegular(numeroHabitacion,true));
                 }
             }
@@ -35,11 +41,14 @@ public class Hotel {
         return pisos;
     }
 
-    public void mostrarEstadoHotel() {
+    public void mostrarEstadoHotel() 
+    {
         StringBuilder estado = new StringBuilder();
-        for (Piso p : pisos) {
+        for (Piso p : pisos) 
+        {
             estado.append(p).append("\n");
-            for (Habitacion h : p.getHabitaciones()) {
+            for (Habitacion h : p.getHabitaciones())
+            {
                 estado.append("  - Habitación " + h.getNumeroHabitacion() + " (Disponible: " + h.isDisponible() + ")\n");
             }
         }

@@ -63,12 +63,17 @@ public class Vista {
 
         // Botón de reserva
         enviarButton = new JButton("Realizar Reserva");
-        enviarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mostrarMensaje("Reserva realizada con éxito.");
+        enviarButton.addActionListener
+        (
+                new ActionListener() 
+            {
+                @Override
+                public void actionPerformed(ActionEvent e) 
+                {
+                    mostrarMensaje("Reserva realizada con éxito.");
+                }
             }
-        });
+        );
         panel.add(enviarButton);
 
         // Agregar el panel de entrada
@@ -97,15 +102,20 @@ public class Vista {
     public boolean pedirTipoHabitacion() {
         return premiumButton.isSelected();
     }
-    public LocalDate pedirFecha(String mensaje) {
-    while (true) {
-        String fechaTexto = JOptionPane.showInputDialog(null, mensaje + " (Formato: AAAA-MM-DD)");
-        try {
-            return LocalDate.parse(fechaTexto);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto. Intenta de nuevo.");
+    public LocalDate pedirFecha(String mensaje) 
+    {
+        while (true) 
+        {
+            String fechaTexto = JOptionPane.showInputDialog(null, mensaje + " (Formato: AAAA-MM-DD)");
+            try 
+            {
+                return LocalDate.parse(fechaTexto);
+            } 
+            catch (Exception e) 
+            {
+                JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto. Intenta de nuevo.");
+            }
         }
     }
-}
 
 }

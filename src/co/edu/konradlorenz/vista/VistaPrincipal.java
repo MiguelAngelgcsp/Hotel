@@ -12,12 +12,15 @@ public class VistaPrincipal {
         this.controlador = new Controlador();  // Inicializa el controlador
     }
 
-    public void ejecutar() {
+    public void ejecutar() 
+    {
         int opcion;
-        do {
+        do 
+        {
             opcion = mostrarMenuYSeleccionar();
 
-            switch (opcion) {
+            switch (opcion) 
+            {
                 case 1:
                     realizarReserva();
                     break;
@@ -33,9 +36,11 @@ public class VistaPrincipal {
         } while (opcion != 0);
     }
 
-    private int mostrarMenuYSeleccionar() {
+    private int mostrarMenuYSeleccionar() 
+    {
         String[] opciones = {"Salir", "Realizar reserva", "Mostrar reservas"};
-        int seleccion = JOptionPane.showOptionDialog(
+        int seleccion = JOptionPane.showOptionDialog
+        (
                 null,
                 "Seleccione una opción:",
                 "Menú Principal",
@@ -52,7 +57,8 @@ public class VistaPrincipal {
         else return 0;
     }
 
-private void realizarReserva() {
+private void realizarReserva() 
+{
     String descripcion = "TIPOS DE HABITACIÓN:\n\n"
             + "Habitación Regular:\n"
             + "- 2 camas\n"
@@ -68,7 +74,8 @@ private void realizarReserva() {
     JOptionPane.showMessageDialog(null, descripcion, "Información de habitaciones", JOptionPane.INFORMATION_MESSAGE);
 
     String[] opciones = {"Habitación Regular", "Habitación Premium"};
-    int tipoSeleccionado = JOptionPane.showOptionDialog(
+    int tipoSeleccionado = JOptionPane.showOptionDialog
+        (
             null,
             "¿Qué tipo de habitación desea reservar?",
             "Tipo de Habitación",
@@ -77,7 +84,7 @@ private void realizarReserva() {
             null,
             opciones,
             opciones[0]
-    );
+        );
 
     if (tipoSeleccionado == JOptionPane.CLOSED_OPTION) return;
     boolean premium = tipoSeleccionado == 1;
@@ -93,13 +100,17 @@ private void realizarReserva() {
     if (entradaTexto == null || entradaTexto.trim().isEmpty()) return;
 
     LocalDate fechaEntrada;
-    try {
+    try 
+    {
         fechaEntrada = LocalDate.parse(entradaTexto);
-        if (fechaEntrada.isBefore(LocalDate.now())) {
+        if (fechaEntrada.isBefore(LocalDate.now())) 
+        {
             JOptionPane.showMessageDialog(null, "La fecha de entrada no puede ser anterior a hoy.", "Error de fecha", JOptionPane.ERROR_MESSAGE);
             return;
         }
-    } catch (Exception e) {
+    } 
+    catch (Exception e) 
+    {
         JOptionPane.showMessageDialog(null, "Formato de fecha inválido. Use AAAA-MM-DD.", "Error de formato", JOptionPane.ERROR_MESSAGE);
         return;
     }
@@ -109,13 +120,17 @@ private void realizarReserva() {
     if (nochesTexto == null || nochesTexto.trim().isEmpty()) return;
 
     int noches;
-    try {
+    try 
+    {
         noches = Integer.parseInt(nochesTexto);
-        if (noches <= 0) {
+        if (noches <= 0) 
+        {
             JOptionPane.showMessageDialog(null, "El número de noches debe ser mayor que cero.", "Error de entrada", JOptionPane.ERROR_MESSAGE);
             return;
         }
-    } catch (NumberFormatException e) {
+    } 
+    catch (NumberFormatException e) 
+    {
         JOptionPane.showMessageDialog(null, "Por favor ingrese un número válido de noches.", "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
@@ -125,9 +140,12 @@ private void realizarReserva() {
     // Reserva
     boolean exito = controlador.reservarHabitacion(nombreCliente, documentoCliente, premium, fechaEntrada, fechaSalida);
 
-    if (exito) {
+    if (exito) 
+    {
         JOptionPane.showMessageDialog(null, "Reserva realizada con éxito.\nSalida: " + fechaSalida, "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-    } else {
+    } 
+    else 
+    {
         JOptionPane.showMessageDialog(null, "No se pudo realizar la reserva. Verifique disponibilidad.", "Error", JOptionPane.ERROR_MESSAGE);
     }
 }

@@ -26,9 +26,12 @@ public class Piso {
     }
 
     
-    public Habitacion buscarDisponible() {
-        for (Habitacion h : habitaciones) {
-            if (h.isDisponible()) {
+    public Habitacion buscarDisponible() 
+    {
+        for (Habitacion h : habitaciones) 
+        {
+            if (h.isDisponible()) 
+            {
                 return h;
             }
         }
@@ -36,7 +39,8 @@ public class Piso {
     }
 
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return "Piso " + numeroPiso + " con " + habitaciones.size() + " habitaciones.";
     }
 }
